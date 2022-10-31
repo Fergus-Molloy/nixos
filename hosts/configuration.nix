@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, lib, pkgs, inputs, user, host, ... }:
+{ config, lib, pkgs, inputs, user, ... }:
 
 {
 # Include the results of the hardware scan.
@@ -33,7 +33,6 @@
 # fix incorrect time because of windows
   time.hardwareClockInLocalTime = true;
 
-  networking.hostName = ${host}; # Define your hostname.
 #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
 # Configure network proxy if necessary

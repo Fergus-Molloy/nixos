@@ -9,21 +9,20 @@ let
   user = "fergus";
 in {
   orion = lib.nixosSystem {
-    inherit system;
-    #host = "orion";
-    specialArgs = { inherit inputs user host; };
-    modules = [ 
-      ./configuration.nix
-      ./orion.nix
+      inherit system;
+      specialArgs = { inherit inputs user; };
+      modules = [ 
+        ./configuration.nix
+        ./orion.nix
 
-      home-manager.nixosModules.home-manager {
-        home-manager.useGlobalPkgs = true;
-        home-manager.useUserPackages = true;
-        home-manager.extraSpecialArgs = { inherit user; };
-        home-manager.users.${user} = {
-          imports = [(import ./home.nix)] ++ [(import ./orion/home.nix)];
-        };
-      }
-    ];
+        home-manager.nixosModules.home-manager {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.extraSpecialArgs = { inherit user; };
+          home-manager.users.${user} = {
+            imports = [(import ./home.nix)] ++ [(import ./orion/home.nix)];
+          };
+        }
+      ];
   };
-};
+}
