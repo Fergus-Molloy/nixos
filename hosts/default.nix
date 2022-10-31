@@ -1,4 +1,4 @@
-{ lib, inputs, nixpkgs, home-manager, user, ... }:
+{ lib, inputs, nixpkgs, home-manager, user, nur, ... }
 
 let
   system = "x86_64-linux";
@@ -12,8 +12,9 @@ in {
       inherit system;
       specialArgs = { inherit inputs user; };
       modules = [ 
+        nur.nixosModules.nur
         ./configuration.nix
-        ./orion.nix
+        ./orion
 
         home-manager.nixosModules.home-manager {
           home-manager.useGlobalPkgs = true;
