@@ -3,9 +3,7 @@
 let
   host = "orion";
 in {
-  imports = {
-    ./hardware-configuration.nix
-  };
+  imports = [(import ./hardware-configuration.nix)];
 
   networking.hostName = "${host}";
 

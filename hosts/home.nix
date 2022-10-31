@@ -21,7 +21,6 @@
 
   home.packages = with pkgs; [
     bpytop
-    rustup
     exa
     feh
     flameshot
