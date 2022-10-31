@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, lib, pkgs, inputs, user, host, ... }:
 
 {
 # Include the results of the hardware scan.
@@ -13,11 +13,14 @@
 # Bootloader.
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
-  boot.loader.grub.enable = true;
-  boot.loader.grub.version = 2;
-  boot.loader.grub.device = "nodev";
-  boot.loader.grub.efiSupport = true;
-  boot.loader.grub.useOSProber = true;
+  boot.loader.grub = {
+    enable = true;
+    version = 2;
+    device = "nodev";
+    efiSupport = true;
+    useOSProber = true;
+    default = "saved";
+  };
 
 # Fonts
   fonts.fonts = with pkgs; [
@@ -30,7 +33,7 @@
 # fix incorrect time because of windows
   time.hardwareClockInLocalTime = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
+  networking.hostName = ${host}; # Define your hostname.
 #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
 # Configure network proxy if necessary
@@ -61,11 +64,6 @@
     libinput.mouse.accelProfile = "flat";
     layout = "gb";
     xkbVariant = "";
-  };
-
-  services.picom = {
-    enable = true;
-    vSync = true;
   };
 
 # configure nvidia gpu
@@ -101,7 +99,7 @@
 # enable zsh
   programs.zsh.enable = true;
 # Define a user account. Don't forget to set a password with ‘passwd’.
-  users.users.fergus = {
+  users.users.${user} = {
     isNormalUser = true;
     shell = pkgs.zsh;
     extraGroups = [ "networkmanager" "wheel" ];
