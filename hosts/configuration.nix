@@ -19,9 +19,10 @@
 # Fonts
   fonts.fonts = with pkgs; [
     fira-code
-      fira-code-symbols
-      noto-fonts
-      noto-fonts-emoji
+    fira-code-symbols
+    noto-fonts
+    noto-fonts-emoji
+    font-awesome
   ];
 
 #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

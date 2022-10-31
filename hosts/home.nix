@@ -28,5 +28,6 @@
     ripgrep
     xclip
     bat
+    fzf
   ];
 }
