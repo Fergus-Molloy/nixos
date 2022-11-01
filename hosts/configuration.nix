@@ -53,6 +53,19 @@
     xkbVariant = "";
   };
 
+  services.picom = {
+    enable = true;
+    vSync = true;
+    fade = true;
+    backend = "glx";
+    settings = {
+      glx-swap-method = 2;
+    };
+    opacityRules = [
+      "90:class_g = 'kitty'"
+    ];
+  };
+
 # Configure console keymap
   console.keyMap = "uk";
 
@@ -104,7 +117,6 @@
       emacs
       kitty
       git
-      discord
   ];
 
 # Configure automatic garbage collection
