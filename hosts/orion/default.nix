@@ -22,6 +22,7 @@ in {
 
   environment.systemPackages = with pkgs; [
     rustup
+    rust-analyzer
     discord
   ];
 }
