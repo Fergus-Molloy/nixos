@@ -33,5 +33,5 @@
     rofi
   ];
 
-  imports = (import ../modules/polybar/polybar.nix) ++ (import ../modules/starship/starship.nix);
+  imports = [(import ../modules/polybar/polybar.nix) (import ../modules/starship/starship.nix)];
 }
