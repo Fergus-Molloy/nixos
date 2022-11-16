@@ -21,6 +21,6 @@
       inherit (nixpkgs) lib;
       inherit inputs nixpkgs home-manager user nur;
       }
-    );
-  };
+      );
+    };
 }

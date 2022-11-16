@@ -117,6 +117,25 @@
       emacs
       kitty
       git
+      # base-devel
+      autoconf
+      automake
+      binutils
+      bison
+      debugedit
+      fakeroot
+      file
+      findutils
+      flex
+      gcc
+      clang
+      gettext
+      groff
+      libtool
+      m4
+      texinfo
+      gnugrep
+      gnumake
   ];
 
 # Configure automatic garbage collection

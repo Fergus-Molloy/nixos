@@ -1,7 +1,8 @@
 {pkgs, ... }:
 
 {
-  home = with pkgs; {
-    rustup
+  home = {
+    packages = with pkgs; [
+    ];
   };
 }

@@ -14,28 +14,27 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" =
-  { device = "/dev/disk/by-uuid/3a674de0-7aab-46d6-8c62-bc4edd71ebca";
-    fsType = "ext4";
-  };
+    { device = "/dev/disk/by-uuid/535870d6-6318-47fa-80d4-c113abaaca8e";
+      fsType = "ext4";
+    };
 
   fileSystems."/boot/efi" =
-  { device = "/dev/disk/by-uuid/39B8-8415";
-    fsType = "vfat";
-  };
+    { device = "/dev/disk/by-uuid/6132-7950";
+      fsType = "vfat";
+    };
 
   swapDevices = [ ];
 
-# Enables DHCP on each ethernet and wireless interface. In case of scripted networking
-# (the default) this is the recommended approach. When using systemd-networkd it's
-# still possible to use this option, but it's recommended to use it in conjunction
-# with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
+  # Enables DHCP on each ethernet and wireless interface. In case of scripted networking
+  # (the default) this is the recommended approach. When using systemd-networkd it's
+  # still possible to use this option, but it's recommended to use it in conjunction
+  # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-# networking.interfaces.eno1.useDHCP = lib.mkDefault true;
-# networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
-# networking.interfaces.wlp5s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp3s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
-  powerManagement.cpuFreqGovernor = lib.mkDefault "performance";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
-# high-resolution display
+  # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
 }

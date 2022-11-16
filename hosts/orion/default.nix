@@ -21,9 +21,7 @@ in {
   services.printing.enable = true;
 
   environment.systemPackages = with pkgs; [
+    rustup
     discord
   ];
-
 }
-
-
