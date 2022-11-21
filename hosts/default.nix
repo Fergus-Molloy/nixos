@@ -21,7 +21,7 @@ in {
           home-manager.useUserPackages = true;
           home-manager.extraSpecialArgs = { inherit user; };
           home-manager.users.${user} = {
-            imports = [(import ./home.nix)];
+            imports = [(import ./home.nix) (import ./orion/home.nix)];
           };
         }
       ];

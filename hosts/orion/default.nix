@@ -4,6 +4,7 @@ let
   host = "orion";
 in {
   imports = [(import ./hardware-configuration.nix)];
+  virtualisation.docker.enable = true;
 
   networking.hostName = "${host}";
 
@@ -23,6 +24,17 @@ in {
   environment.systemPackages = with pkgs; [
     rustup
     rust-analyzer
+    lld # for faster compile times in rust
+    clang # for faster compile times in rust
+    pkg-config
     discord
+    vscode
+    postgresql
+    nodejs
+    nodePackages.npm
   ];
+  nix.extraOptions = ''
+    keep-outputs = true
+    keep-derivations = true
+  '';
 }
